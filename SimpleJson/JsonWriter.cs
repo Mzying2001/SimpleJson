@@ -28,7 +28,7 @@ namespace SimpleJson
             }
             else
             {
-                sb.Append(value.ToString());
+                WriteString(sb, value.ToString());
             }
         }
 
