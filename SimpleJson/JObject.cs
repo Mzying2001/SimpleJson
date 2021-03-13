@@ -8,9 +8,16 @@ namespace SimpleJson
     {
         public Dictionary<string, object> Content { get; private set; }
 
+        public int Count => Content.Count;
+
         public JObject()
         {
             Content = new Dictionary<string, object>();
+        }
+
+        public bool Contains(string propertyName)
+        {
+            return Content.ContainsKey(propertyName);
         }
 
         public override string ToString()
@@ -37,6 +44,37 @@ namespace SimpleJson
                     Content[propertyName] = value;
                 else
                     Content.Add(propertyName, value);
+            }
+        }
+
+        public object this[params string[] propertyNames]
+        {
+            get
+            {
+                var json = this;
+                int count = propertyNames.Length;
+                for (int i = 0; i < count - 1; i++)
+                {
+                    json = json[propertyNames[i]] as JObject;
+                }
+                return json[propertyNames[count - 1]];
+            }
+            set
+            {
+                var json = this;
+                int count = propertyNames.Length;
+                for (int i = 0; i < count - 1; i++)
+                {
+                    if (json.Contains(propertyNames[i]))
+                        json = json[propertyNames[i]] as JObject;
+                    else
+                    {
+                        var next = new JObject();
+                        json[propertyNames[i]] = next;
+                        json = next;
+                    }
+                }
+                json[propertyNames[count - 1]] = value;
             }
         }
 
