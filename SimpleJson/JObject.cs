@@ -15,7 +15,7 @@ namespace SimpleJson
 
         public override string ToString()
         {
-            throw new Exception("Unfinished");
+            return JsonWriter.JsonToString(this);
         }
 
         public IEnumerator<KeyValuePair<string, object>> GetEnumerator()
