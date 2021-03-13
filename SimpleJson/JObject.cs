@@ -6,7 +6,7 @@ namespace SimpleJson
 {
     public class JObject : IEnumerable<KeyValuePair<string, object>>
     {
-        public Dictionary<string, object> Content { get; private set; }
+        private Dictionary<string, object> Content { get; set; }
 
         public int Count => Content.Count;
 
@@ -82,6 +82,20 @@ namespace SimpleJson
         {
             var value = this[propertyName];
             return value == null ? default : (T)Convert.ChangeType(value, typeof(T));
+        }
+
+        public bool TryGetValue<T>(string propertyName, out T value)
+        {
+            try
+            {
+                value = GetValue<T>(propertyName);
+                return true;
+            }
+            catch(Exception)
+            {
+                value = default;
+                return false;
+            }
         }
 
         public void Remove(string propertyName)
