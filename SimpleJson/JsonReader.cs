@@ -25,7 +25,7 @@ namespace SimpleJson
             return propertyName;
         }
 
-        private static JObject ReadObject(string str, ref int index)
+        private static JObject ReadJsonObject(string str, ref int index)
         {
             index = Next(str, index);
             JObject obj = new JObject();
@@ -48,7 +48,7 @@ namespace SimpleJson
                 switch (str[index])
                 {
                     case '{':
-                        obj[propertyName] = ReadObject(str, ref index);
+                        obj[propertyName] = ReadJsonObject(str, ref index);
                         break;
 
                     case '[':
@@ -159,7 +159,7 @@ namespace SimpleJson
                 switch (ch)
                 {
                     case '{':
-                        list.Add(ReadObject(str, ref index));
+                        list.Add(ReadJsonObject(str, ref index));
                         break;
 
                     case '[':
@@ -231,7 +231,7 @@ namespace SimpleJson
         public static JObject Read(string str)
         {
             int index = 0;
-            return ReadObject(str, ref index);
+            return ReadJsonObject(str, ref index);
         }
 
         public static JObject ReadFile(string path)
