@@ -50,5 +50,10 @@ namespace SimpleJson
         {
             Content.Remove(propertyName);
         }
+
+        public static JObject Parse(string json)
+        {
+            return JsonReader.Read(json);
+        }
     }
 }

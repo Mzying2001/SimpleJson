@@ -225,7 +225,7 @@ namespace SimpleJson
 
                 default:
                     throw new Exception($"Invalid value: {value}.");
-            };
+            }
         }
 
         public static JObject Read(string str)
