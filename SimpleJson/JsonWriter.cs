@@ -103,7 +103,7 @@ namespace SimpleJson
         public static string JsonToString(JObject json)
         {
             if (json == null)
-                return null;
+                return string.Empty;
 
             var sb = new StringBuilder();
             WriteJsonObject(sb, json);
