@@ -1,34 +1,44 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 
 namespace SimpleJson
 {
     public static class JsonWriter
     {
-        private static void WriteJObject(StringBuilder sb, JObject json)
+        private static void WriteObject(StringBuilder sb, object value)
+        {
+            if (value == null)
+            {
+                sb.Append("null");
+            }
+            else if (value is JObject json)
+            {
+                WriteJsonObject(sb, json);
+            }
+            else if (value is object[] arr)
+            {
+                WriteArray(sb, arr);
+            }
+            else if (value is string || value is StringBuilder)
+            {
+                WriteString(sb, value.ToString());
+            }
+            else if (value is bool || double.TryParse(value.ToString(), out _))
+            {
+                sb.Append(value.ToString().ToLower());
+            }
+            else
+            {
+                sb.Append(value.ToString());
+            }
+        }
+
+        private static void WriteJsonObject(StringBuilder sb, JObject json)
         {
             sb.Append('{');
             foreach (var item in json)
             {
                 sb.Append($"\"{item.Key}\":");
-                var value = item.Value;
-                if (value is JObject obj)
-                {
-                    WriteJObject(sb, obj);
-                }
-                else if (value is object[] arr)
-                {
-                    WriteArray(sb, arr);
-                }
-                else if (value is string str)
-                {
-                    WriteString(sb, str);
-                }
-                else
-                {
-                    sb.Append(value.ToString());
-                }
+                WriteObject(sb, item.Value);
                 sb.Append(",");
             }
             if (sb[sb.Length - 1] == ',')
@@ -42,26 +52,7 @@ namespace SimpleJson
             sb.Append('[');
             foreach (var item in arr)
             {
-                if (item is JObject obj)
-                {
-                    WriteJObject(sb, obj);
-                }
-                else if (item is object[] objs)
-                {
-                    WriteArray(sb, objs);
-                }
-                else if (item is string || item is StringBuilder)
-                {
-                    WriteString(sb, item.ToString());
-                }
-                else if (item is bool || double.TryParse(item.ToString(), out _))
-                {
-                    sb.Append(item.ToString());
-                }
-                else
-                {
-                    WriteString(sb, item.ToString());
-                }
+                WriteObject(sb, item);
                 sb.Append(",");
             }
             if (sb[sb.Length - 1] == ',')
@@ -111,14 +102,17 @@ namespace SimpleJson
 
         public static string JsonToString(JObject json)
         {
+            if (json == null)
+                return null;
+
             var sb = new StringBuilder();
-            WriteJObject(sb, json);
+            WriteJsonObject(sb, json);
             return sb.ToString();
         }
 
         public static void WriteFile(string path, JObject json)
         {
-            System.IO.File.WriteAllText(path, json.ToString());
+            System.IO.File.WriteAllText(path, JsonToString(json));
         }
     }
 }
