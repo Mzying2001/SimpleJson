@@ -115,5 +115,10 @@ namespace SimpleJson
             WriteJObject(sb, json);
             return sb.ToString();
         }
+
+        public static void WriteFile(string path, JObject json)
+        {
+            System.IO.File.WriteAllText(path, json.ToString());
+        }
     }
 }
