@@ -4,7 +4,13 @@ namespace SimpleJson
 {
     public static class JsonWriter
     {
-        private static void WriteObject(StringBuilder sb, object value)
+        private static void Indent(StringBuilder sb, int indent)
+        {
+            while (indent-- > 0)
+                sb.Append("    ");
+        }
+
+        private static void WriteObject(StringBuilder sb, object value, int indent)
         {
             if (value == null)
             {
@@ -12,11 +18,11 @@ namespace SimpleJson
             }
             else if (value is JObject json)
             {
-                WriteJsonObject(sb, json);
+                WriteJsonObject(sb, json, indent);
             }
             else if (value is object[] arr)
             {
-                WriteArray(sb, arr);
+                WriteArray(sb, arr, indent);
             }
             else if (value is string || value is StringBuilder)
             {
@@ -32,33 +38,45 @@ namespace SimpleJson
             }
         }
 
-        private static void WriteJsonObject(StringBuilder sb, JObject json)
+        private static void WriteJsonObject(StringBuilder sb, JObject json, int indent)
         {
-            sb.Append('{');
+            bool first = true;
+
+            sb.Append("{\n");
             foreach (var item in json)
             {
-                sb.Append($"\"{item.Key}\":");
-                WriteObject(sb, item.Value);
-                sb.Append(",");
+                if (first)
+                    first = false;
+                else
+                    sb.Append(",\n");
+
+                Indent(sb, indent + 1);
+                sb.Append($"\"{item.Key}\": ");
+                WriteObject(sb, item.Value, indent + 1);
             }
-            if (sb[sb.Length - 1] == ',')
-                sb[sb.Length - 1] = '}';
-            else
-                sb.Append('}');
+            sb.Append("\n");
+            Indent(sb, indent);
+            sb.Append("}");
         }
 
-        private static void WriteArray(StringBuilder sb, object[] arr)
+        private static void WriteArray(StringBuilder sb, object[] arr, int indent)
         {
-            sb.Append('[');
+            bool first = true;
+
+            sb.Append("[\n");
             foreach (var item in arr)
             {
-                WriteObject(sb, item);
-                sb.Append(",");
+                if (first)
+                    first = false;
+                else
+                    sb.Append(",\n");
+
+                Indent(sb, indent + 1);
+                WriteObject(sb, item, indent + 1);
             }
-            if (sb[sb.Length - 1] == ',')
-                sb[sb.Length - 1] = ']';
-            else
-                sb.Append(']');
+            sb.Append("\n");
+            Indent(sb, indent);
+            sb.Append("]");
         }
 
         private static void WriteString(StringBuilder sb, string str)
@@ -106,7 +124,7 @@ namespace SimpleJson
                 return string.Empty;
 
             var sb = new StringBuilder();
-            WriteJsonObject(sb, json);
+            WriteJsonObject(sb, json, 0);
             return sb.ToString();
         }
 
