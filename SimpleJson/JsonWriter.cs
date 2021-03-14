@@ -42,7 +42,14 @@ namespace SimpleJson
         {
             bool first = true;
 
-            sb.Append("{\n");
+            sb.Append('{');
+            if (json.Count == 0)
+            {
+                sb.Append('}');
+                return;
+            }
+
+            sb.Append('\n');
             foreach (var item in json)
             {
                 if (first)
@@ -54,16 +61,23 @@ namespace SimpleJson
                 sb.Append($"\"{item.Key}\": ");
                 WriteObject(sb, item.Value, indent + 1);
             }
-            sb.Append("\n");
+            sb.Append('\n');
             Indent(sb, indent);
-            sb.Append("}");
+            sb.Append('}');
         }
 
         private static void WriteArray(StringBuilder sb, object[] arr, int indent)
         {
             bool first = true;
 
-            sb.Append("[\n");
+            sb.Append('[');
+            if (arr.Length == 0)
+            {
+                sb.Append(']');
+                return;
+            }
+
+            sb.Append('\n');
             foreach (var item in arr)
             {
                 if (first)
@@ -74,9 +88,9 @@ namespace SimpleJson
                 Indent(sb, indent + 1);
                 WriteObject(sb, item, indent + 1);
             }
-            sb.Append("\n");
+            sb.Append('\n');
             Indent(sb, indent);
-            sb.Append("]");
+            sb.Append(']');
         }
 
         private static void WriteString(StringBuilder sb, string str)
