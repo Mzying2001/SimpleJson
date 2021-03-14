@@ -6,7 +6,7 @@ namespace SimpleJson
 {
     public class JObject : IEnumerable<KeyValuePair<string, object>>
     {
-        private Dictionary<string, object> Content { get; set; }
+        protected Dictionary<string, object> Content { get; set; }
 
         public int Count => Content.Count;
 
