@@ -40,10 +40,10 @@ namespace SimpleJson
             get => Content[propertyName];
             set
             {
-                if (Content.ContainsKey(propertyName))
+                if (Contains(propertyName))
                     Content[propertyName] = value;
                 else
-                    Content.Add(propertyName, value);
+                    Add(propertyName, value);
             }
         }
 
@@ -91,11 +91,52 @@ namespace SimpleJson
                 value = GetValue<T>(propertyName);
                 return true;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 value = default;
                 return false;
             }
+        }
+
+        public void Add(string propertyName, object value)
+        {
+            if (Contains(propertyName))
+                throw new Exception($"Prpperty \"{propertyName}\" already exists.");
+            Content.Add(propertyName, value);
+        }
+
+        public void Add<T>(KeyValuePair<string, T> keyValuePair)
+        {
+            Add(keyValuePair.Key, keyValuePair.Value);
+        }
+
+        public void Add<T>(params KeyValuePair<string, T>[] keyValuePairs)
+        {
+            foreach (var item in keyValuePairs)
+                Add(item.Key, item.Value);
+        }
+
+        public void Add<T>(IEnumerable<KeyValuePair<string, T>> keyValuePairs)
+        {
+            foreach (var item in keyValuePairs)
+                Add(item.Key, item.Value);
+        }
+
+        public void Add<T>((string, T) tuple)
+        {
+            Add(tuple.Item1, tuple.Item2);
+        }
+
+        public void Add<T>(params (string, T)[] tuples)
+        {
+            foreach (var item in tuples)
+                Add(item.Item1, item.Item2);
+        }
+
+        public void Add<T>(IEnumerable<(string, T)> tuples)
+        {
+            foreach (var item in tuples)
+                Add(item.Item1, item.Item2);
         }
 
         public void Remove(string propertyName)
