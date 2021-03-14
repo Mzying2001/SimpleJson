@@ -110,7 +110,7 @@ namespace SimpleJson
             Add(keyValuePair.Key, keyValuePair.Value);
         }
 
-        public void Add<T>(params KeyValuePair<string, T>[] keyValuePairs)
+        public void Add(params KeyValuePair<string, object>[] keyValuePairs)
         {
             foreach (var item in keyValuePairs)
                 Add(item.Key, item.Value);
@@ -127,7 +127,7 @@ namespace SimpleJson
             Add(tuple.Item1, tuple.Item2);
         }
 
-        public void Add<T>(params (string, T)[] tuples)
+        public void Add(params (string, object)[] tuples)
         {
             foreach (var item in tuples)
                 Add(item.Item1, item.Item2);
