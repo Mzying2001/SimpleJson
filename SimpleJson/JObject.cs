@@ -22,7 +22,7 @@ namespace SimpleJson
 
         public override string ToString()
         {
-            return JsonWriter.JsonToString(this);
+            return JsonWriter.Write(this);
         }
 
         public IEnumerator<KeyValuePair<string, object>> GetEnumerator()

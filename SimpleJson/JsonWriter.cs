@@ -132,7 +132,7 @@ namespace SimpleJson
             sb.Append('"');
         }
 
-        public static string JsonToString(JObject json)
+        public static string Write(JObject json)
         {
             if (json == null)
                 return string.Empty;
@@ -144,7 +144,7 @@ namespace SimpleJson
 
         public static void WriteFile(string path, JObject json)
         {
-            System.IO.File.WriteAllText(path, JsonToString(json));
+            System.IO.File.WriteAllText(path, Write(json));
         }
     }
 }
