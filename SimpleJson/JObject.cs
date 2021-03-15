@@ -120,6 +120,20 @@ namespace SimpleJson
             return result;
         }
 
+        public bool TryGetArray<T>(string propertyName, out T[] value)
+        {
+            try
+            {
+                value = GetArray<T>(propertyName);
+                return true;
+            }
+            catch
+            {
+                value = default;
+                return false;
+            }
+        }
+
         public void Add(string propertyName, object value)
         {
             if (Contains(propertyName))
