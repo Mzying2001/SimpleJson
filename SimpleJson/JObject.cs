@@ -10,6 +10,16 @@ namespace SimpleJson
 
         public int Count => Content.Count;
 
+        public IEnumerable<string> PropertyNames
+        {
+            get => Content.Keys;
+        }
+
+        public IEnumerable<object> Values
+        {
+            get => Content.Values;
+        }
+
         public JObject()
         {
             Content = new Dictionary<string, object>();
