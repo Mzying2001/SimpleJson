@@ -108,6 +108,18 @@ namespace SimpleJson
             }
         }
 
+        public T[] GetArray<T>(string propertyName)
+        {
+            var source = GetValue<object[]>(propertyName);
+            if (typeof(T) == typeof(object))
+                return (T[])(object)source;
+
+            var result = new T[source.Length];
+            for (int i = 0; i < source.Length; i++)
+                result[i] = (T)source[i];
+            return result;
+        }
+
         public void Add(string propertyName, object value)
         {
             if (Contains(propertyName))
