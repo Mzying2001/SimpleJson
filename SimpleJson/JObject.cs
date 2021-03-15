@@ -175,6 +175,11 @@ namespace SimpleJson
                 Add(item.Item1, item.Item2);
         }
 
+        public void Clear()
+        {
+            Content.Clear();
+        }
+
         public void Remove(string propertyName)
         {
             Content.Remove(propertyName);
