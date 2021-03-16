@@ -77,10 +77,12 @@ namespace SimpleJson
                     continue;
 
                 var value = json[field.Name];
+                var fType = field.FieldType;
+
                 if (value is JObject jobj)
-                    field.SetValue(obj, Deserialize(jobj, field.FieldType));
+                    field.SetValue(obj, fType == typeof(JObject) ? value : Deserialize(jobj, fType));
                 else
-                    field.SetValue(obj, Convert.ChangeType(value, field.FieldType));
+                    field.SetValue(obj, Convert.ChangeType(value, fType));
             }
 
             foreach (var prop in targetType.GetProperties())
@@ -89,10 +91,12 @@ namespace SimpleJson
                     continue;
 
                 var value = json[prop.Name];
+                var pType = prop.PropertyType;
+
                 if (value is JObject jobj)
-                    prop.SetValue(obj, Deserialize(jobj, prop.PropertyType));
+                    prop.SetValue(obj, pType == typeof(JObject) ? value : Deserialize(jobj, pType));
                 else
-                    prop.SetValue(obj, Convert.ChangeType(value, prop.PropertyType));
+                    prop.SetValue(obj, Convert.ChangeType(value, pType));
             }
 
             return obj;
