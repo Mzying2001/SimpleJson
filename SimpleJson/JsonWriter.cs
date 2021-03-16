@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections;
+using System.Text;
 
 namespace SimpleJson
 {
@@ -20,9 +21,9 @@ namespace SimpleJson
             {
                 WriteJsonObject(sb, json, indent);
             }
-            else if (value is object[] arr)
+            else if (value is IList list)
             {
-                WriteArray(sb, arr, indent);
+                WriteArray(sb, list, indent);
             }
             else if (value is string || value is StringBuilder)
             {
@@ -66,19 +67,19 @@ namespace SimpleJson
             sb.Append('}');
         }
 
-        private static void WriteArray(StringBuilder sb, object[] arr, int indent)
+        private static void WriteArray(StringBuilder sb, IList list, int indent)
         {
             bool first = true;
 
             sb.Append('[');
-            if (arr.Length == 0)
+            if (list.Count == 0)
             {
                 sb.Append(']');
                 return;
             }
 
             sb.Append('\n');
-            foreach (var item in arr)
+            foreach (var item in list)
             {
                 if (first)
                     first = false;
