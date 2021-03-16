@@ -101,7 +101,7 @@ namespace SimpleJson
                 value = GetValue<T>(propertyName);
                 return true;
             }
-            catch (Exception)
+            catch
             {
                 value = default;
                 return false;
