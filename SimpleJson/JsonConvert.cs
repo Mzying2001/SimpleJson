@@ -53,6 +53,20 @@ namespace SimpleJson
             return json;
         }
 
+        public static bool TrySerialize(object obj, out JObject json)
+        {
+            try
+            {
+                json = Serialize(obj);
+                return true;
+            }
+            catch
+            {
+                json = null;
+                return false;
+            }
+        }
+
         public static object Deserialize(JObject json, Type targetType, params object[] args)
         {
             var obj = Activator.CreateInstance(targetType, args);
@@ -87,6 +101,20 @@ namespace SimpleJson
         public static T Deserialize<T>(JObject json, params object[] args)
         {
             return (T)Deserialize(json, typeof(T), args);
+        }
+
+        public static bool TryDeserialize<T>(JObject json, out T value, params object[] args)
+        {
+            try
+            {
+                value = Deserialize<T>(json, args);
+                return true;
+            }
+            catch
+            {
+                value = default;
+                return false;
+            }
         }
     }
 }
