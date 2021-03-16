@@ -27,7 +27,7 @@ namespace SimpleJson
             }
             else
             {
-                return SerializeObject(value);
+                return Serialize(value);
             }
         }
 
@@ -39,7 +39,7 @@ namespace SimpleJson
             return resultList.ToArray();
         }
 
-        public static JObject SerializeObject(object obj)
+        public static JObject Serialize(object obj)
         {
             var json = new JObject();
             var objType = obj.GetType();
@@ -53,7 +53,7 @@ namespace SimpleJson
             return json;
         }
 
-        public static object DeserializeObject(JObject json, Type targetType, params object[] args)
+        public static object Deserialize(JObject json, Type targetType, params object[] args)
         {
             var obj = Activator.CreateInstance(targetType, args);
 
@@ -64,7 +64,7 @@ namespace SimpleJson
 
                 var value = json[field.Name];
                 if (value is JObject jobj)
-                    field.SetValue(obj, DeserializeObject(jobj, field.FieldType));
+                    field.SetValue(obj, Deserialize(jobj, field.FieldType));
                 else
                     field.SetValue(obj, Convert.ChangeType(value, field.FieldType));
             }
@@ -76,7 +76,7 @@ namespace SimpleJson
 
                 var value = json[prop.Name];
                 if (value is JObject jobj)
-                    prop.SetValue(obj, DeserializeObject(jobj, prop.PropertyType));
+                    prop.SetValue(obj, Deserialize(jobj, prop.PropertyType));
                 else
                     prop.SetValue(obj, Convert.ChangeType(value, prop.PropertyType));
             }
@@ -84,9 +84,9 @@ namespace SimpleJson
             return obj;
         }
 
-        public static T DeserializeObject<T>(JObject json, params object[] args)
+        public static T Deserialize<T>(JObject json, params object[] args)
         {
-            return (T)DeserializeObject(json, typeof(T), args);
+            return (T)Deserialize(json, typeof(T), args);
         }
     }
 }
