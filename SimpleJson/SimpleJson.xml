@@ -1,0 +1,257 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SimpleJson</name>
+    </assembly>
+    <members>
+        <member name="T:SimpleJson.JObject">
+            <summary>
+            Represents a Json object.
+            </summary>
+        </member>
+        <member name="P:SimpleJson.JObject.Content">
+            <summary>
+            The contents of Json.
+            </summary>
+        </member>
+        <member name="P:SimpleJson.JObject.Count">
+            <summary>
+            Get the number of elements in the JObject.
+            </summary>
+        </member>
+        <member name="P:SimpleJson.JObject.PropertyNames">
+            <summary>
+            Get an enumerator of all element names in the JObject.
+            </summary>
+        </member>
+        <member name="P:SimpleJson.JObject.Values">
+            <summary>
+            Get an enumerator of all values in the JObject.
+            </summary>
+        </member>
+        <member name="M:SimpleJson.JObject.#ctor">
+            <summary>
+            Initializes a JObject instance.
+            </summary>
+        </member>
+        <member name="M:SimpleJson.JObject.Contains(System.String)">
+            <summary>
+            Determines if the JObject contains a certain element.
+            </summary>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJson.JObject.ToString">
+            <summary>
+            Returns the Json string of the object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJson.JObject.GetEnumerator">
+            <summary>
+            Get the KeyValuePair enumerator for the JObject content.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SimpleJson.JObject.Item(System.String)">
+            <summary>
+            Get or set the value by element name.
+            </summary>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:SimpleJson.JObject.Item(System.String[])">
+            <summary>
+            Get or set the value of a child JObject by element name.
+            </summary>
+            <param name="propertyNames"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJson.JObject.GetValue``1(System.String)">
+            <summary>
+            Get the element of the specified type by element name.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJson.JObject.TryGetValue``1(System.String,``0@)">
+            <summary>
+            Attempts to get the element of the specified type by element name.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="propertyName"></param>
+            <param name="value"></param>
+            <returns>Returns whether the value was successfully retrieved.</returns>
+        </member>
+        <member name="M:SimpleJson.JObject.GetArray``1(System.String)">
+            <summary>
+            Get an array of the specified type.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJson.JObject.TryGetArray``1(System.String,``0[]@)">
+            <summary>
+            Attempts to get an array of the specified type.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="propertyName"></param>
+            <param name="value"></param>
+            <returns>Returns if the array was successfully obtained.</returns>
+        </member>
+        <member name="M:SimpleJson.JObject.Add(System.String,System.Object)">
+            <summary>
+            Add element.
+            </summary>
+            <param name="propertyName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:SimpleJson.JObject.Add``1(System.Collections.Generic.KeyValuePair{System.String,``0})">
+            <summary>
+            Adds an element via KeyValuePair.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="keyValuePair"></param>
+        </member>
+        <member name="M:SimpleJson.JObject.Add(System.Collections.Generic.KeyValuePair{System.String,System.Object}[])">
+            <summary>
+            Adds an element via KeyValuePairs.
+            </summary>
+            <param name="keyValuePairs"></param>
+        </member>
+        <member name="M:SimpleJson.JObject.Add``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,``0}})">
+            <summary>
+            Adds an element via KeyValuePairs.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="keyValuePairs"></param>
+        </member>
+        <member name="M:SimpleJson.JObject.Add``1(System.ValueTuple{System.String,``0})">
+            <summary>
+            Adds elements via tuple.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="tuple"></param>
+        </member>
+        <member name="M:SimpleJson.JObject.Add(System.ValueTuple{System.String,System.Object}[])">
+            <summary>
+            Adds elements via tuples.
+            </summary>
+            <param name="tuples"></param>
+        </member>
+        <member name="M:SimpleJson.JObject.Add``1(System.Collections.Generic.IEnumerable{System.ValueTuple{System.String,``0}})">
+            <summary>
+            Adds elements via tuples.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="tuples"></param>
+        </member>
+        <member name="M:SimpleJson.JObject.Clear">
+            <summary>
+            Removes all keys and values of the JObject.
+            </summary>
+        </member>
+        <member name="M:SimpleJson.JObject.Remove(System.String)">
+            <summary>
+            Removes the element with the specified name.
+            </summary>
+            <param name="propertyName"></param>
+        </member>
+        <member name="M:SimpleJson.JObject.Parse(System.String)">
+            <summary>
+            Parse string into JObject.
+            </summary>
+            <param name="json"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SimpleJson.JsonConvert">
+            <summary>
+            Static class for serializing and deserializing Json.
+            </summary>
+        </member>
+        <member name="M:SimpleJson.JsonConvert.Serialize(System.Object)">
+            <summary>
+            Serializes the specified object instance into a JObject.
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJson.JsonConvert.TrySerialize(System.Object,SimpleJson.JObject@)">
+            <summary>
+            Attempts to serialize the specified object instance into a JObject.
+            </summary>
+            <param name="obj"></param>
+            <param name="json"></param>
+            <returns>Returns if the serialization was successful.</returns>
+        </member>
+        <member name="M:SimpleJson.JsonConvert.Deserialize(SimpleJson.JObject,System.Type,System.Object[])">
+            <summary>
+            Deserializes a JObject into an object of the specified type.
+            </summary>
+            <param name="json"></param>
+            <param name="targetType"></param>
+            <param name="args">The parameter to initialize the object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJson.JsonConvert.Deserialize``1(SimpleJson.JObject,System.Object[])">
+            <summary>
+            Deserializes a JObject into an object of the specified type.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="json"></param>
+            <param name="args">The parameter to initialize the object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJson.JsonConvert.TryDeserialize``1(SimpleJson.JObject,``0@,System.Object[])">
+            <summary>
+            Attempts to deserialize a JObject into an object instance of the specified type.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="json"></param>
+            <param name="value"></param>
+            <param name="args">The parameter to initialize the object.</param>
+            <returns>Returns whether the deserialization was successful.</returns>
+        </member>
+        <member name="T:SimpleJson.JsonReader">
+            <summary>
+            Static class for reading Json files.
+            </summary>
+        </member>
+        <member name="M:SimpleJson.JsonReader.Read(System.String)">
+            <summary>
+            Converts a string to a JObject.
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJson.JsonReader.ReadFile(System.String)">
+            <summary>
+            Reads the specified file and convert it to a JObject.
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SimpleJson.JsonWriter">
+            <summary>
+            Static class for writing Json files.
+            </summary>
+        </member>
+        <member name="M:SimpleJson.JsonWriter.Write(SimpleJson.JObject)">
+            <summary>
+            Converts a JObject to a string.
+            </summary>
+            <param name="json"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJson.JsonWriter.WriteFile(System.String,SimpleJson.JObject)">
+            <summary>
+            Converts a JObject to a string and writes it to the specified file. 
+            If the file does not exist, it will be created.
+            </summary>
+            <param name="path"></param>
+            <param name="json"></param>
+        </member>
+    </members>
+</doc>

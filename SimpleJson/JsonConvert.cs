@@ -5,6 +5,9 @@ using System.Text;
 
 namespace SimpleJson
 {
+    /// <summary>
+    /// Static class for serializing and deserializing Json.
+    /// </summary>
     public static class JsonConvert
     {
         private static object ConvertToJsonType(object value)

@@ -4,8 +4,14 @@ using System.Collections.Generic;
 
 namespace SimpleJson
 {
+    /// <summary>
+    /// Represents a Json object.
+    /// </summary>
     public class JObject : IEnumerable<KeyValuePair<string, object>>
     {
+        /// <summary>
+        /// The contents of Json.
+        /// </summary>
         protected Dictionary<string, object> Content { get; set; }
 
         /// <summary>
@@ -47,11 +53,19 @@ namespace SimpleJson
             return Content.ContainsKey(propertyName);
         }
 
+        /// <summary>
+        /// Returns the Json string of the object.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return JsonWriter.Write(this);
         }
 
+        /// <summary>
+        /// Get the KeyValuePair enumerator for the JObject content.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator<KeyValuePair<string, object>> GetEnumerator()
         {
             return Content.GetEnumerator();

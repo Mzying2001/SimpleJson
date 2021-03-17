@@ -4,6 +4,9 @@ using System.Text;
 
 namespace SimpleJson
 {
+    /// <summary>
+    /// Static class for reading Json files.
+    /// </summary>
     public static class JsonReader
     {
         private static int Next(string str, int index)

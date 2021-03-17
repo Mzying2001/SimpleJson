@@ -3,6 +3,9 @@ using System.Text;
 
 namespace SimpleJson
 {
+    /// <summary>
+    /// Static class for writing Json files.
+    /// </summary>
     public static class JsonWriter
     {
         private static void Indent(StringBuilder sb, int indent)

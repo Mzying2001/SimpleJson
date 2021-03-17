@@ -17,4 +17,8 @@
     <PackageReleaseNotes></PackageReleaseNotes>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\Users\14989\Documents\GitHub\SimpleJson\SimpleJson\SimpleJson.xml</DocumentationFile>
+  </PropertyGroup>
+
 </Project>
