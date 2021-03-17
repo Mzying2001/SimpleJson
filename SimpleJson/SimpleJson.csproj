@@ -14,7 +14,7 @@
     <FileVersion>1.0.1.1</FileVersion>
     <Version>1.0.2</Version>
     <Description>A lightweight JSON class library.</Description>
-    <PackageReleaseNotes>A lightweight JSON class library.</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
   </PropertyGroup>
 
 </Project>
