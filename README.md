@@ -12,7 +12,7 @@ The JObject class represents a json object, The data types of json and C# corres
 
 Of course, you can also add `int` / `byte` / `float` / `StringBuilder` etc. to `JObject` instances, which will be converted to the corresponding data type by default when saving Json data. All classes that implement the IList interface are considered arrays, and when reading Json files, all arrays are recognized as `object[]` types by default.
 
-### JObject
+## JObject
 
 You can declare a JObject through following ways.
 
@@ -86,6 +86,8 @@ It represents the following json.
 }
 ```
 
+---
+
 Read values via indexer.
 
 ```C#
@@ -111,6 +113,8 @@ var arr = json.GetArray<object>("sample_arr"); //arr is object[]
 ```
 
 Using the above method you have to make sure that the JObject object has the corresponding key value, if the index does not exist for the key value then an exception will be thrown. If you are not sure if the key value exists, use `TryGetValue` to get the value or use the `TryGetArray` method to get the array, they will return a bool value indicating whether the get was successful or not.
+
+---
 
 Modify the value by the following method.
 
@@ -140,7 +144,7 @@ json.Add(new Dictionary<string, object>
 });
 ```
 
-### JsonConvert
+## JsonConvert
 
 This is a static class, which means you cannot create instances of this class. With this class, you can serialize object instances of other classes to get a JObject without having to create one manually; you can also create an object instance by deserializing the JObject.
 
@@ -189,6 +193,8 @@ The output is as follows.
 }
 ```
 
+---
+
 Deserialization is also very simple.
 
 ```C#
@@ -209,14 +215,14 @@ sample_str
 123, 0.456, sample
 ```
 
-### JsonReader
+## JsonReader
 
 A static class for reading Json strings or files, which contains two public methods.
 
 + `Read` : Read a string and convert it to a JObject instance.
 + `ReadFile` : Read a Json file and convert it to a JObject instance.
 
-### JsonWriter
+## JsonWriter
 
 A static class for converting a JObject to a string or saving a Json file, containing two public methods.
 
