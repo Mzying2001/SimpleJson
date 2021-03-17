@@ -39,6 +39,11 @@ namespace SimpleJson
             return resultList.ToArray();
         }
 
+        /// <summary>
+        /// Serializes the specified object instance into a JObject.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public static JObject Serialize(object obj)
         {
             var json = new JObject();
@@ -53,6 +58,12 @@ namespace SimpleJson
             return json;
         }
 
+        /// <summary>
+        /// Attempts to serialize the specified object instance into a JObject.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="json"></param>
+        /// <returns>Returns if the serialization was successful.</returns>
         public static bool TrySerialize(object obj, out JObject json)
         {
             try
@@ -67,6 +78,13 @@ namespace SimpleJson
             }
         }
 
+        /// <summary>
+        /// Deserializes a JObject into an object of the specified type.
+        /// </summary>
+        /// <param name="json"></param>
+        /// <param name="targetType"></param>
+        /// <param name="args">The parameter to initialize the object.</param>
+        /// <returns></returns>
         public static object Deserialize(JObject json, Type targetType, params object[] args)
         {
             var obj = Activator.CreateInstance(targetType, args);
@@ -102,11 +120,26 @@ namespace SimpleJson
             return obj;
         }
 
+        /// <summary>
+        /// Deserializes a JObject into an object of the specified type.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="json"></param>
+        /// <param name="args">The parameter to initialize the object.</param>
+        /// <returns></returns>
         public static T Deserialize<T>(JObject json, params object[] args)
         {
             return (T)Deserialize(json, typeof(T), args);
         }
 
+        /// <summary>
+        /// Attempts to deserialize a JObject into an object instance of the specified type.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="json"></param>
+        /// <param name="value"></param>
+        /// <param name="args">The parameter to initialize the object.</param>
+        /// <returns>Returns whether the deserialization was successful.</returns>
         public static bool TryDeserialize<T>(JObject json, out T value, params object[] args)
         {
             try

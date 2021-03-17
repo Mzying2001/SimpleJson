@@ -133,6 +133,11 @@ namespace SimpleJson
             sb.Append('"');
         }
 
+        /// <summary>
+        /// Converts a JObject to a string.
+        /// </summary>
+        /// <param name="json"></param>
+        /// <returns></returns>
         public static string Write(JObject json)
         {
             if (json == null)
@@ -143,6 +148,12 @@ namespace SimpleJson
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Converts a JObject to a string and writes it to the specified file. 
+        /// If the file does not exist, it will be created.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="json"></param>
         public static void WriteFile(string path, JObject json)
         {
             System.IO.File.WriteAllText(path, Write(json));

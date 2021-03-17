@@ -228,12 +228,22 @@ namespace SimpleJson
             }
         }
 
+        /// <summary>
+        /// Converts a string to a JObject.
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public static JObject Read(string str)
         {
             int index = 0;
             return ReadJsonObject(str, ref index);
         }
 
+        /// <summary>
+        /// Reads the specified file and convert it to a JObject.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public static JObject ReadFile(string path)
         {
             return Read(System.IO.File.ReadAllText(path));
