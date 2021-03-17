@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>Mzying2001</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageId>SimpleJson.Mzying2001</PackageId>
+    <PackageId>Mzying2001.SimpleJson</PackageId>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile></PackageLicenseFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
