@@ -1,5 +1,8 @@
 # SimpleJson
 
+![license](https://img.shields.io/github/license/Mzying2001/SimpleJson)
+![nuget-version](https://img.shields.io/nuget/v/SimpleJson.Mzying2001)
+
 ## Get Start
 
 With SimpleJson, you can read/write json in a very simple way. This class library contains only four classes: JObject, JsonConvert, JsonReader and JsonWriter.
