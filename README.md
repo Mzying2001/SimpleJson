@@ -1,7 +1,7 @@
 # SimpleJson
 
-![license](https://img.shields.io/github/license/Mzying2001/SimpleJson)
-![nuget-version](https://img.shields.io/nuget/v/SimpleJson.Mzying2001)
+[![license](https://img.shields.io/github/license/Mzying2001/SimpleJson)](https://github.com/Mzying2001/SimpleJson/blob/master/LICENSE)
+[![nuget-version](https://img.shields.io/nuget/v/SimpleJson.Mzying2001)](https://www.nuget.org/packages/SimpleJson.Mzying2001/)
 
 ## Get Start
 
