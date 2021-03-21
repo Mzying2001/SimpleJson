@@ -46,31 +46,6 @@ var json = new JObject()
 };
 ```
 
-You can also use Tuple or KeyValuePair to initialize a JObject, which gives the same result as the above example.
-
-```C#
-var json = new JObject
-{
-    ("sample_str", "this is a string"),
-    ("sample_int", 12345),
-    ("sample_num", 0.888),
-    {
-        "sample_arr", new object[]
-        {
-            "hello",
-            123
-        }
-    },
-    {
-        "sample_obj", new JObject
-        {
-            ("p1", "test"),
-            ("p2", 12345)
-        }
-    }
-};
-```
-
 It represents the following json.
 
 ```Json
