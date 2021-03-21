@@ -17,13 +17,13 @@ Of course, you can also add `int` / `byte` / `float` / `StringBuilder` etc. to `
 
 ## JObject
 
-You can declare a JObject through following ways.
+The JObject class represents the json object, you can read/write the json file through the JObject class, you can also convert the json string to JObject through the `Parse` method.
 
 ```C#
 var json = new JObject(); //Create an empty json object
 ```
 
-Use initializer to initialize json object.
+If you want to initialize the content when creating a JObject, you can use the following method, which looks just like writing json in C# code.
 
 ```C#
 var json = new JObject()
