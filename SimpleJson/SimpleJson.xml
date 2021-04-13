@@ -204,12 +204,39 @@
             <param name="args">The parameter to initialize the object.</param>
             <returns></returns>
         </member>
+        <member name="M:SimpleJson.JsonConvert.Deserialize(System.String,System.Type,System.Object[])">
+            <summary>
+            Deserializes a json string into an object of the specified type.
+            </summary>
+            <param name="jsonStr"></param>
+            <param name="targrtType"></param>
+            <param name="args">The parameter to initialize the object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJson.JsonConvert.Deserialize``1(System.String,System.Object[])">
+            <summary>
+            Deserializes a json string into an object of the specified type.
+            </summary>
+            <param name="jsonStr"></param>
+            <param name="args">The parameter to initialize the object.</param>
+            <returns></returns>
+        </member>
         <member name="M:SimpleJson.JsonConvert.TryDeserialize``1(SimpleJson.JObject,``0@,System.Object[])">
             <summary>
             Attempts to deserialize a JObject into an object instance of the specified type.
             </summary>
             <typeparam name="T"></typeparam>
             <param name="json"></param>
+            <param name="value"></param>
+            <param name="args">The parameter to initialize the object.</param>
+            <returns>Returns whether the deserialization was successful.</returns>
+        </member>
+        <member name="M:SimpleJson.JsonConvert.TryDeserialize``1(System.String,``0@,System.Object[])">
+            <summary>
+            Attempts to deserialize a json string into an object instance of the specified type.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="jsonStr"></param>
             <param name="value"></param>
             <param name="args">The parameter to initialize the object.</param>
             <returns>Returns whether the deserialization was successful.</returns>

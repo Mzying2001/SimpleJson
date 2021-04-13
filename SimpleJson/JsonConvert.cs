@@ -136,6 +136,31 @@ namespace SimpleJson
         }
 
         /// <summary>
+        /// Deserializes a json string into an object of the specified type.
+        /// </summary>
+        /// <param name="jsonStr"></param>
+        /// <param name="targrtType"></param>
+        /// <param name="args">The parameter to initialize the object.</param>
+        /// <returns></returns>
+        public static object Deserialize(string jsonStr, Type targrtType, params object[] args)
+        {
+            var json = JsonReader.Read(jsonStr);
+            return Deserialize(json, targrtType, args);
+        }
+
+        /// <summary>
+        /// Deserializes a json string into an object of the specified type.
+        /// </summary>
+        /// <param name="jsonStr"></param>
+        /// <param name="args">The parameter to initialize the object.</param>
+        /// <returns></returns>
+        public static T Deserialize<T>(string jsonStr, params object[] args)
+        {
+            var json = JsonReader.Read(jsonStr);
+            return Deserialize<T>(json, args);
+        }
+
+        /// <summary>
         /// Attempts to deserialize a JObject into an object instance of the specified type.
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -147,6 +172,29 @@ namespace SimpleJson
         {
             try
             {
+                value = Deserialize<T>(json, args);
+                return true;
+            }
+            catch
+            {
+                value = default;
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Attempts to deserialize a json string into an object instance of the specified type.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="jsonStr"></param>
+        /// <param name="value"></param>
+        /// <param name="args">The parameter to initialize the object.</param>
+        /// <returns>Returns whether the deserialization was successful.</returns>
+        public static bool TryDeserialize<T>(string jsonStr, out T value, params object[] args)
+        {
+            try
+            {
+                var json = JsonReader.Read(jsonStr);
                 value = Deserialize<T>(json, args);
                 return true;
             }
