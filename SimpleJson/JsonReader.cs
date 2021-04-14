@@ -251,5 +251,26 @@ namespace SimpleJson
         {
             return Read(System.IO.File.ReadAllText(path));
         }
+
+        /// <summary>
+        /// Convert a string representing a json array to object[].
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static object[] ReadArray(string str)
+        {
+            int index = 0;
+            return ReadArray(str.Trim(), ref index);
+        }
+
+        /// <summary>
+        /// Reads the file representing the json array and convert it to object.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static object[] ReadArrayFile(string path)
+        {
+            return ReadArray(System.IO.File.ReadAllText(path));
+        }
     }
 }
