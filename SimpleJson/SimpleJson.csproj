@@ -12,7 +12,7 @@
     <Copyright>Copyright (c) 2021 Mzying2001</Copyright>
     <AssemblyVersion>1.0.4.0</AssemblyVersion>
     <FileVersion>1.0.4.0</FileVersion>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <Description>A lightweight JSON class library.</Description>
     <PackageReleaseNotes></PackageReleaseNotes>
   </PropertyGroup>

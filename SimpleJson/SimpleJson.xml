@@ -260,6 +260,36 @@
             <param name="path"></param>
             <returns></returns>
         </member>
+        <member name="M:SimpleJson.JsonReader.ReadArray(System.String)">
+            <summary>
+            Convert a string representing a json array to object[].
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJson.JsonReader.ReadArray``1(System.String)">
+            <summary>
+            Converts an array representing a json string to an array of the specified type.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJson.JsonReader.ReadArrayFile(System.String)">
+            <summary>
+            Reads the file representing the json array and convert it to object[].
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJson.JsonReader.ReadArrayFile``1(System.String)">
+            <summary>
+            Reads the file representing the json array and convert it to an array of the specified type.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
         <member name="T:SimpleJson.JsonWriter">
             <summary>
             Static class for writing Json files.
@@ -274,11 +304,26 @@
         </member>
         <member name="M:SimpleJson.JsonWriter.WriteFile(System.String,SimpleJson.JObject)">
             <summary>
-            Converts a JObject to a string and writes it to the specified file. 
+            Converts a JObject to a string and writes it to the specified file.
             If the file does not exist, it will be created.
             </summary>
             <param name="path"></param>
             <param name="json"></param>
+        </member>
+        <member name="M:SimpleJson.JsonWriter.WriteArray(System.Collections.IList)">
+            <summary>
+            Converts an array to a json array string.
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleJson.JsonWriter.WriteArrayFile(System.String,System.Collections.IList)">
+            <summary>
+            Converts an array to a string and writes it to the specified file.
+            If the file does not exist, it will be created.
+            </summary>
+            <param name="path"></param>
+            <param name="list"></param>
         </member>
     </members>
 </doc>
