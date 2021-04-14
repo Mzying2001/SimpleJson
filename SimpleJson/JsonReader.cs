@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace SimpleJson
 {
@@ -264,13 +265,39 @@ namespace SimpleJson
         }
 
         /// <summary>
-        /// Reads the file representing the json array and convert it to object.
+        /// Converts an array representing a json string to an array of the specified type.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static T[] ReadArray<T>(string str)
+        {
+            var arr = ReadArray(str);
+            var ret = new T[arr.Length];
+            for (int i = 0; i < arr.Length; i++)
+                ret[i] = (T)Convert.ChangeType(arr[i], typeof(T));
+            return ret;
+        }
+
+        /// <summary>
+        /// Reads the file representing the json array and convert it to object[].
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
         public static object[] ReadArrayFile(string path)
         {
             return ReadArray(System.IO.File.ReadAllText(path));
+        }
+
+        /// <summary>
+        /// Reads the file representing the json array and convert it to an array of the specified type.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static T[] ReadArrayFile<T>(string path)
+        {
+            return ReadArray<T>(System.IO.File.ReadAllText(path));
         }
     }
 }
