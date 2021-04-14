@@ -152,7 +152,7 @@ namespace SimpleJson
         }
 
         /// <summary>
-        /// Converts a JObject to a string and writes it to the specified file. 
+        /// Converts a JObject to a string and writes it to the specified file.
         /// If the file does not exist, it will be created.
         /// </summary>
         /// <param name="path"></param>
@@ -160,6 +160,29 @@ namespace SimpleJson
         public static void WriteFile(string path, JObject json)
         {
             System.IO.File.WriteAllText(path, Write(json));
+        }
+
+        /// <summary>
+        /// Converts an array to a json array string.
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static string WriteArray(IList list)
+        {
+            var sb = new StringBuilder();
+            WriteArray(sb, list, 0);
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Converts an array to a string and writes it to the specified file.
+        /// If the file does not exist, it will be created.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="list"></param>
+        public static void WriteArrayFile(string path, IList list)
+        {
+            System.IO.File.WriteAllText(path, WriteArray(list));
         }
     }
 }
