@@ -2,6 +2,7 @@
 
 [![license](https://img.shields.io/github/license/Mzying2001/SimpleJson)](https://raw.githubusercontent.com/Mzying2001/SimpleJson/master/LICENSE)
 [![nuget-version](https://img.shields.io/nuget/v/Mzying2001.SimpleJson)](https://www.nuget.org/packages/Mzying2001.SimpleJson)
+[![nuget-downloads](https://img.shields.io/nuget/dt/Mzying2001.SimpleJson)](https://www.nuget.org/packages/Mzying2001.SimpleJson)
 
 ## Get Start
 
@@ -132,14 +133,10 @@ For example, we now have a class as follows.
 class SampleClass
 {
     //All public fields and properties will be serialized
+    //Private fields and properties will not be serialized
     public string fieldStr;
     public string PropStr { get; set; }
     public object[] SampleArr { get; set; }
-
-    //Private fields and properties will not be serialized
-    private int num;
-    private int Num { get; set; }
-    private string privateStr;
 }
 ```
 
@@ -147,10 +144,12 @@ Then we can create a JObject directly from an instance object of the SampleClass
 
 ```C#
 //Create an instance of SampleClass
-var sample = new SampleClass();
-sample.PropStr = "sample_str";
-sample.fieldStr = "sample_str";
-sample.SampleArr = new object[] { 123, 0.456, "sample" };
+var sample = new SampleClass
+{
+    PropStr = "sample_str",
+    fieldStr = "sample_str",
+    SampleArr = new object[] { 123, 0.456, "sample" }
+};
 
 //Serialize
 var json = JsonConvert.Serialize(sample);
@@ -195,14 +194,22 @@ sample_str
 
 ## JsonReader
 
-A static class for reading Json strings or files, which contains two public methods.
+A static class for reading Json strings or files, which contains the following methods.
 
-+ `Read` : Read a string and convert it to a JObject instance.
-+ `ReadFile` : Read a Json file and convert it to a JObject instance.
+|Method         |Function                                                                                 |
+|---------------|-----------------------------------------------------------------------------------------|
+|`Read`         |Read a string and convert it to a JObject instance.                                      |
+|`ReadFile`     |Read a Json file and convert it to a JObject instance.                                   |
+|`ReadArray`    |Convert a string representing a json array to `object[]`.                                |
+|`ReadArrayFile`|Read a file representing the json array and convert it to an array of the specified type.|
 
 ## JsonWriter
 
-A static class for converting a JObject to a string or saving a Json file, containing two public methods.
+A static class for converting a JObject to a string or saving a Json file, containing following methods.
 
-+ `Write` : Convert JObject to Json string.
-+ `WriteFile` : Converts a JObject into a Json string and writes it to a file, which will be created if the file does not exist.
+|Method          |Function                                                         |
+|----------------|-----------------------------------------------------------------|
+|`Write`         |Convert JObject to Json string.                                  |
+|`WriteFile`     |Converts a JObject into a Json string and writes it to a file.   |
+|`WriteArray`    |Converts an array to a json array string.                        |
+|`WriteArrayFile`|Converts an array to a Json array string and writes it to a file.|
